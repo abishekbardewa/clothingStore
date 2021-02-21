@@ -1,11 +1,11 @@
 import React from 'react';
-import DirectoryMenu from '../../components/menu-item/directory-menu/directory-menu';
+import Directory from '../../components/directory/directory';
 
 import './homepage.scss';
 const HomePage = () => (
 	// Outside Component
 	<div className="homepage">
-		<DirectoryMenu />
+		<Directory />
 	</div>
 );
 
