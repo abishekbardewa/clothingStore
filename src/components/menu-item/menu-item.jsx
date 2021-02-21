@@ -1,5 +1,5 @@
-// import reactDom from 'react-dom';
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import './menu-item.scss';
 const menuItem = (props) => {
@@ -19,4 +19,4 @@ const menuItem = (props) => {
 	);
 };
 
-export default menuItem;
+export default withRouter(menuItem);
