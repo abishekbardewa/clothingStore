@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/crown.svg.svg';
-import './header.scss';
-import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/cart-icon';
 import CartDropdown from '../cart-dropdown/cart-dropdown';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { ReactComponent as Logo } from '../../assets/crown.svg.svg';
+import './header.scss';
 
 const Header = ({ currentUser, hidden }) => {
 	return (
@@ -36,10 +39,8 @@ const Header = ({ currentUser, hidden }) => {
 	);
 };
 
-//Destructure props
-//{ user: { currentUser }, cart: { hidden } }
-const mapsStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-	currentUser,
-	hidden,
+const mapsStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
+	hidden: selectCartHidden,
 });
 export default connect(mapsStateToProps)(Header);

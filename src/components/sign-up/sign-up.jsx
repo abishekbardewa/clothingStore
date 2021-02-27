@@ -36,7 +36,6 @@ class SignUp extends React.Component {
 	handleChange = (event) => {
 		event.preventDefault();
 		const { name, value } = event.target;
-		console.log(name, value);
 		this.setState({
 			[name]: value,
 		});
