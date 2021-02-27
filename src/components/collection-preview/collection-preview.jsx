@@ -1,7 +1,7 @@
 import React from 'react';
 import CollectionItem from '../collection-item/collection-item';
 import './collection-preview.scss';
-const collectionPreview = (props) => {
+const CollectionPreview = (props) => {
 	return (
 		<div className="collection-preview">
 			<div className="title">{props.title.toUpperCase()}</div>
@@ -16,4 +16,4 @@ const collectionPreview = (props) => {
 	);
 };
 
-export default collectionPreview;
+export default CollectionPreview;
