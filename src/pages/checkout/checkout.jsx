@@ -7,31 +7,39 @@ import CheckoutItem from '../../components/checkout-item/checkout-item';
 
 import './checkout.scss';
 
-const CheckoutPage = ({ cartItems, total }) => (
-	<div className="checkout-page">
-		<div className="checkout-header">
-			<div className="header-block">
-				<span>Product</span>
+const CheckoutPage = ({ cartItems, total }) => {
+	console.log(cartItems);
+
+	return cartItems.length ? (
+		<div className="checkout-page">
+			<div className="checkout-header">
+				<div className="header-block">
+					<span>Product</span>
+				</div>
+				<div className="header-block">
+					<span>Description</span>
+				</div>
+				<div className="header-block">
+					<span>Quantity</span>
+				</div>
+				<div className="header-block">
+					<span>Price</span>
+				</div>
+				<div className="header-block">
+					<span>Remove</span>
+				</div>
 			</div>
-			<div className="header-block">
-				<span>Description</span>
-			</div>
-			<div className="header-block">
-				<span>Quantity</span>
-			</div>
-			<div className="header-block">
-				<span>Price</span>
-			</div>
-			<div className="header-block">
-				<span>Remove</span>
-			</div>
+			{cartItems.map((cartItem) => (
+				<CheckoutItem key={cartItem.id} cartItem={cartItem} />
+			))}
+			<div className="total">TOTAL: ${total}</div>
 		</div>
-		{cartItems.map((cartItem) => (
-			<CheckoutItem key={cartItem.id} cartItem={cartItem} />
-		))}
-		<div className="total">TOTAL: ${total}</div>
-	</div>
-);
+	) : (
+		<div className="checkout-page">
+			<span className="empty-message">You cart is empty</span>
+		</div>
+	);
+};
 
 const mapsStateToProps = createStructuredSelector({
 	cartItems: selectCartItems,
